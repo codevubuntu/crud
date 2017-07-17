@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	<meta charset="utf-8" />
+	<title>Test7 AngularJS</title>
+	<link rel="stylesheet" href="css/ex11.css">
+	</head>
+	
+	<body ng-app ng-controller="monControl">
+		<h1>Recherche par nom</h1>
+  <form>
+			<p>Nom <input type:'text' ng-model="recherche"></p>
+			<button ng-click="chercher()">Chercher</button>
+  </form>
+  <h2>Résultat</h2>
+  <div ng-repeat="perso in resultat">
+			<p>Nom : {{perso.nom}}</p>
+			<p>Prénom : {{perso.prenom}}</p>
+			<p>Age : {{perso.age}}</p>
+			<p>Poids : {{perso.poids}}</p>
+			<a ng-click='edition(perso)' href="#">Editer cette fiche</a>
+			<h1 ng-show='edit'>Edition de la fiche</h1>
+			<form ng-show='edit'>
+				<p>Nom <input type="text" placeholder="{{fiche.nom}}" ng-model="perso.nom"></p>
+				<p>Prénom <input type="text" placeholder="{{fiche.prenom}}" ng-model="perso.prenom">
+				</p>
+				<p>Age <input type="text" placeholder="{{fiche.age}}" ng-model="perso.age"></p>
+				<p>Poids <input type="text" placeholder="{{fiche.poids}}" ng-model="perso.poids"></p>
+				<button ng-click='traitEd()'>Modifier</button>
+			</form>
+		<hr>
+		</div>
+		<hr>
+  <h1>Ajouter</h1>
+		<form>
+			<p>Nom <input type="text" ng-model="perso.nom"></p>
+			<p>Prénom <input type="text" ng-model="perso.prenom"></p>
+			<p>Age <input type="text" ng-model="perso.age"></p>
+			<p>Poids <input type="text" ng-model="perso.poids"></p>
+			<button ng-click='traitForm()'>Ajouter</button></p>
+		</form>
+		<hr>
+		<h1>Liste des fiches</h1>
+	<div ng-repeat="perso in listePerso">
+		<p>Nom : {{perso.nom}}</p>
+		<p>Prénom : {{perso.prenom}}</p>
+		<p>Age : {{perso.age}}</p>
+		<p>Poids : {{perso.poids}}</p>
+		<a href='#' ng-click='supr(perso)'>supprimer</a>
+		<hr>
+	</div>
+		<script src="lib/angular.min.js"></script>
+		<script src="lib/angular-route.min.js"></script>
+		<script src="javascript/config.js"></script>
+		<script src="javascript/exmongo.js"></script>
+		
+	</body>
+</html>
