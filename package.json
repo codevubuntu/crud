@@ -1,13 +1,13 @@
 {
 	"name": "crud",
 	"version": "1.0.0",
-	"main": "servmongo.js.js",
+	"main": "servmongo.js",
 	"scripts": {
-		"start": "node servmongo.js.js"
+		"start": "node servmongo.js"
 	},
 	"dependencies": {
-		"express": "^4.13.4",
+		"express": "^4.15.3",
 		"mongoose":"^4.11.1",
-		"body-parser":"^1.8.0"
+		"body-parser":"^1.17.2"
 	}
 }
