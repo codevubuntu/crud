@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
-mongoose.connect('mongodb://localhost/maDB17');
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
+var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL ;
+mongoose.connect('mongodb://mongoURL/maDB17');
 var persoSchema=mongoose.Schema({
 	nom : String,
 	prenom : String,
@@ -78,6 +81,6 @@ app.delete('/api/suppr/:id', function(req, res) {
 	}
 	})
 });
-app.listen(8080);
+app.listen(port, ip);
 
-console.log("Serveur démaré au port 8080");
+console.log('Server running on http://%s:%s', ip, port);
