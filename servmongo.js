@@ -1,21 +1,6 @@
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080 ;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
-var mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL ;
-var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-    mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-    mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-    mongoDatabase = process.env[mongoServiceName + '_DATABASE'];
-mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;    
-mongoose.connect(mongoURL);
-var persoSchema=mongoose.Schema({
-	nom : String,
-	prenom : String,
-	age : String,
-	poids : String
-});
-var Perso=mongoose.model('Perso',persoSchema);
+
 
 //gestion du serveur HTTP
 var express = require('express');
