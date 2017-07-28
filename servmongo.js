@@ -12,6 +12,7 @@ var Perso=mongoose.model('Perso',persoSchema);
 //gestion du serveur HTTP
 var express = require('express');
 var app = express();
+app.set('port', (process.env.PORT || 5000)) ;
 app.use('/javascript', express.static(__dirname + '/javascript'));
 app.use('/lib', express.static(__dirname + '/lib'));
 app.use(bodyParser());
@@ -78,6 +79,6 @@ app.delete('/api/suppr/:id', function(req, res) {
 	}
 	})
 });
-app.listen(8080);
-
-console.log("Serveur démaré au port 8080");
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'))
+});
